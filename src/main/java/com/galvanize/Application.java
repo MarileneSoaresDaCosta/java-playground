@@ -1,31 +1,14 @@
 package com.galvanize;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.net.URI;
+import java.nio.file.LinkPermission;
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.spi.CurrencyNameProvider;
+
+import static com.galvanize.ToSentence.toSentence;
 
 public class Application {
-    static void fizzBuzz() {
-        System.out.println("This is fizzBuzz");
-        Scanner userObj = new Scanner(System.in);
-        System.out.println("Enter an integer:");
-        String userNum = userObj.nextLine();
-        int num = Integer.parseInt(userNum);
-        // fizzBuzz logic
-        String result= "";
-        if(num % 3 == 0) {
-            result += "Fizz";
-        }
-        if (num % 5 == 0) {
-            result += "Buzz";
-        }
-        if(num % 3 != 0 && num % 5 != 0) {
-            System.out.println(num);
-        } else {
-            System.out.println(result);
-        }
-    }
 
     public static ArrayList<String> sortArray(String[] inputArray) {
         ArrayList<String> result = new ArrayList<>(Arrays.asList(inputArray));
@@ -39,34 +22,19 @@ public class Application {
         result.put(10, "Laphroaig");
         return result;
     }
-
-    public static String toSentence(String[] input){
-        StringBuilder result = new StringBuilder();
-        // empty case
-        if(input.length == 0 || input[0] == "") {
-            return result.toString();
-        }
-        // normal case, only one valid string
-        if(input.length == 1) {
-            result.append(input[0]);
-            return result.toString();
-        }
-        if(input.length == 2) {
-            result = new StringBuilder(input[0] + " and " + input[1]);
-            return result.toString();
-        }
-        // length > 3 - use string builder class
-        for (int i = 0; i < input.length - 1; i++) {
-            if(i == 0) {
-                result.append(input[i]);
-            } else {
-                result.append(", ").append(input[i]);
-            }
-        }
-        result.append(" and ").append(input[input.length - 1]);
-
-        return result.toString();
+    // organizing code exercises
+    LocalDateTime now = LocalDateTime.now();
+    public class Browser {
+        private URI currentPage;
+        private ArrayList<String> history;
+        private LocalDateTime visitedAt;
+        private HashMap<String, Integer> visitCount;
+        private boolean on;
     }
+
+
+
+
     public static void main(String[] args) {
 //        fizzBuzz();
         /*
@@ -80,7 +48,7 @@ public class Application {
         // testing hashmap exercise
         HashMap<Integer, String> testHM = genHashMap();
         System.out.println("hm created" + testHM);
-        */
+
         //testing accumulator exercise
         String [] test1 = {"Alice", "Bob", "Carol"};
         String test1String = toSentence(test1);
@@ -97,5 +65,26 @@ public class Application {
         String [] test4 = {""};
         String test4String = toSentence(test4);
         System.out.println(test4String);
+
+        CompiledProgrammingLanguage java = new CompiledProgrammingLanguage();
+        java.setName("Java");
+        java.setCompilerCommand("javac");
+        //        java.getCompilerCommand(); // => returns "javac"
+        System.out.println(java.createString());
+        */
+        // inheritance - overriding
+        InPersonCourse course = new InPersonCourse(Arrays.asList("Eliza", "Angelica"), "Peggy");
+        System.out.println(( course.getDescription())); // => returns Eliza, Angelica (taught by Peggy)
+
+        // nested classes checkpoint
+        Product prod = new Product("car", 150);
+        System.out.println(prod.getValueInCents());
+        Product.Currency dollars = prod.getCurrency();
+        System.out.println("dollars: " +dollars.getUSD());
+//        System.out.println(dollars.getUSD());
+
+
+
+
     }
 }
