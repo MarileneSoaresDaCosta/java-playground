@@ -71,7 +71,7 @@ public class Application {
         java.setCompilerCommand("javac");
         //        java.getCompilerCommand(); // => returns "javac"
         System.out.println(java.createString());
-        */
+
         // inheritance - overriding
         InPersonCourse course = new InPersonCourse(Arrays.asList("Eliza", "Angelica"), "Peggy");
         System.out.println(( course.getDescription())); // => returns Eliza, Angelica (taught by Peggy)
@@ -83,8 +83,16 @@ public class Application {
         System.out.println("dollars: " +dollars.getUSD());
 //        System.out.println(dollars.getUSD());
 
+        Panel panel = new Panel();
+        panel.setContent("hello");
+        System.out.println(("get content - the overridden: " + panel.getContent()));
 
+        System.out.println("panel to html: " +panel.toHTML());
 
+         */
+//    ExceptionsHandling.doIt(5);
+    /*The statement foo = bar / baz; throws an ArithmeticException but the try / catch block does not handle this exception. Note that the finally block executes regardless of exception handling.
+     */
 
     }
 }
